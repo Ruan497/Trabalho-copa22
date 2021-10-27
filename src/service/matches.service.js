@@ -15,7 +15,8 @@ const listAll = () => matchesDB
 const remove = (id, res) => {
     const matchIndex = matchesDB.findIndex(m => m.id == id)
     if (matchIndex >= 0) {
-        res.send(matchesDB.splice(matchIndex, 1))
+        matchesDB.splice(matchIndex, 1)
+        res.send('deleted')
 
     } else {
         res.statusCode = 400
@@ -48,14 +49,23 @@ const listSpec = (id, res) => {
     }
 }
 
-const valideCreate = (av1, res) => {
-    if (!av1.nome || av1.nome.trim() == '') {
+
+const valideCreate = (match, res) => {
+    if (!match.nome || match.nome.trim() == '') {
         res.statusCode = 400
-        res.send('Nome obrigatório')
+        res.send('Nome do time A obrigatório')
         return false
-    } else if (!av1.coach || av1.coach.trim() == '') {
+    } else if (!match.coach || match.coach.trim() == '') {
         res.statusCode = 400
-        res.send('Coach obrigatório')
+        res.send('Nome do time B obrigatório')
+        return false
+    } else if(!match.Date || match.Date.trim() == ''){
+        res.statusCode = 400
+        res.send('Data do jogo obrigatória')
+        return false
+    } else if(!match.time || match.time.trim() == ''){
+        res.statusCode = 400
+        res.send('Hora do jogo obrigatória')
         return false
     }
     return true
