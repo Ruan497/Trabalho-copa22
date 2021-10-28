@@ -1,0 +1,526 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "api para o trabalho",
+    "version": "1.0.0",
+    "title": "Api copa do mundo 2022"
+  },
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "countries",
+      "description": "CRUD of countries"
+    },
+    {
+      "name": "matches",
+      "description": "CRUD of teams, date and time of a match"
+    },
+    {
+      "name": "results",
+      "description": "CRUD of completed matches results"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/countries": {
+      "post": {
+        "tags": [
+          "countries"
+        ],
+        "summary": "create new countrie",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "countrie object that needs to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/countrie"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created"
+          },
+          "400": {
+            "description": "all informations are required"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "countries"
+        ],
+        "summary": "list all countries",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "return all countries"
+          }
+        }
+      }
+    },
+    "/countries/{id}": {
+      "get": {
+        "tags": [
+          "countries"
+        ],
+        "summary": "list specific countrie",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that wan to be viwed",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "return all countries"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "countries"
+        ],
+        "summary": "update countrie",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "countrie object that needs to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/countrie"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that we want to be update",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid customer id"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "countries"
+        ],
+        "summary": "delete spec countrie",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that we want to be delete",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid"
+          }
+        }
+      }
+    },
+    "/countries/groups/{group}": {
+      "get": {
+        "tags": [
+          "countries"
+        ],
+        "summary": "get countries by group",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "group",
+            "in": "path",
+            "type": "string",
+            "description": "group thar we wanto to see teams",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful"
+          },
+          "400": {
+            "description": "invalid group"
+          }
+        }
+      }
+    },
+    "/matches": {
+      "post": {
+        "tags": [
+          "matches"
+        ],
+        "summary": "create new match",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "match object that needs to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/match"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created"
+          },
+          "400": {
+            "description": "all informations are required"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "matches"
+        ],
+        "summary": "list all matches",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "return all matches"
+          }
+        }
+      }
+    },
+    "/matches/{id}": {
+      "get": {
+        "tags": [
+          "matches"
+        ],
+        "summary": "list specific match",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that wan to be viwed",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "return all countries"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "matches"
+        ],
+        "summary": "update match",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "match object that needs to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/match"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that we want to be update",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid customer id"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "matches"
+        ],
+        "summary": "delete spec match",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that we want to be delete",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid"
+          }
+        }
+      }
+    },
+    "/results": {
+      "post": {
+        "tags": [
+          "results"
+        ],
+        "summary": "inform the result of a completed match",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "result object that needs to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "created"
+          },
+          "400": {
+            "description": "all informations are required"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "results"
+        ],
+        "summary": "list the results of all completed matches",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "return all results"
+          }
+        }
+      }
+    },
+    "/results/{id}": {
+      "get": {
+        "tags": [
+          "results"
+        ],
+        "summary": "list specific completed match",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that wan to be viwed",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "return the result"
+          },
+          "400": {
+            "description": "invalid result id"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "results"
+        ],
+        "summary": "update result",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "result object that needs to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/result"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that we want to be update",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid result id"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "results"
+        ],
+        "summary": "delete spec result",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "integer",
+            "description": "id that we want to be delete",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid result id"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "countrie": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "coach": {
+          "type": "string"
+        },
+        "group": {
+          "type": "string"
+        }
+      }
+    },
+    "match": {
+      "type": "object",
+      "properties": {
+        "nameOfTeamA": {
+          "type": "string"
+        },
+        "nameOfTeamB": {
+          "type": "string"
+        },
+        "matchDate": {
+          "type": "string"
+        },
+        "matchTime": {
+          "type": "string"
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "nameOfTeamA": {
+          "type": "string"
+        },
+        "nameOfTeamB": {
+          "type": "string"
+        },
+        "scoreOfTeamA": {
+          "type": "string"
+        },
+        "scoreOfTeamB": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

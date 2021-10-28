@@ -51,20 +51,16 @@ const listSpec = (id, res) => {
 
 
 const valideCreate = (match, res) => {
-    if (!match.nome || match.nome.trim() == '') {
-        res.statusCode = 400
+    if (!match.nameOfTeamA || match.nameOfTeamA.trim() == '') {
         res.send('Nome do time A obrigatório')
         return false
-    } else if (!match.coach || match.coach.trim() == '') {
-        res.statusCode = 400
+    } else if (!match.nameOfTeamB || match.nameOfTeamB.trim() == '') { 
         res.send('Nome do time B obrigatório')
         return false
-    } else if(!match.Date || match.Date.trim() == ''){
-        res.statusCode = 400
+    } else if(!match.matchDate || match.matchDate.trim() == ''){       
         res.send('Data do jogo obrigatória')
         return false
-    } else if(!match.time || match.time.trim() == ''){
-        res.statusCode = 400
+    } else if(!match.matchTime || match.matchTime.trim() == ''){   
         res.send('Hora do jogo obrigatória')
         return false
     }

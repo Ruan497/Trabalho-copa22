@@ -47,14 +47,30 @@ const listSpec = (id, res) => {
     }
 }
 
-const valideCreate = (match, res) => {
-    if (!match.nome || match.nome.trim() == '') {
+const listByGroup = (group, res) =>{
+    const groupDB = []
+    for(let i = 0; i < countriesDB.length ; i ++){
+        if(countriesDB[i].group == group){
+            groupDB.push(countriesDB[i])
+        }
+    }
+    if(groupDB.length > 0){
+        return groupDB
+    } else {
         res.statusCode = 400
+        res.send('grupo inexistente')
+    }
+}
+
+const valideCreate = (countrie, res) => {
+    if (!countrie.name || countrie.name.trim() == '') {
         res.send('Nome obrigatório')
         return false
-    } else if (!match.coach || match.coach.trim() == '') {
-        res.statusCode = 400
+    } else if (!countrie.coach || countrie.coach.trim() == '') {
         res.send('Coach obrigatório')
+        return false
+    } else if(!countrie.group || countrie.group.trim() == ''){
+        res.send('Grupo obrigatório')
         return false
     }
     return true
@@ -66,5 +82,6 @@ module.exports = {
     listAll,
     remove,
     update,
-    listSpec
+    listSpec,
+    listByGroup
 }

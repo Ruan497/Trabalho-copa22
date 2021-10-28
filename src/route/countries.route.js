@@ -8,6 +8,7 @@ const app = express()
 router.post('/', countriesController.create)
 router.get('/', countriesController.listAll)
 router.get('/:id', countriesController.listSpec)
+router.get('/groups/:group', countriesController.listByGroup)
 router.delete('/:id', countriesController.remove)
 router.put('/:id', countriesController.update)
 

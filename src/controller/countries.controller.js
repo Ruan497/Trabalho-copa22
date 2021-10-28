@@ -22,10 +22,17 @@ const update = (req, res)=>{
 
 }
 
+const listByGroup = (req, res) =>{
+    res.send(
+    countriesService.listByGroup(req.params.group, req.body, res)
+    )
+}
+
 module.exports = {
     listAll,
     create,
     remove,
     listSpec,
-    update
+    update,
+    listByGroup
 }
