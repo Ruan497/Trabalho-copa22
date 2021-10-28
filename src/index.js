@@ -13,8 +13,7 @@ app.use('/countries', countriesRoute)
 app.use('/matches', matchesRoute)
 app.use('/results', resultsRoute)
 
-
-const port = 8087
+const port = process.env.PORT || 5000
 
 app.listen(port, () =>{
     console.log(`server started on port ${port}`)
